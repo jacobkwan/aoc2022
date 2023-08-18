@@ -34,7 +34,7 @@ fn puzzle2(input: &str) -> u32 {
     // sort in descending and return largest 3
     calories_by_elf.sort_unstable_by(|a, b| b.cmp(a));
 
-    calories_by_elf[0] + calories_by_elf[1] + calories_by_elf[2]
+    calories_by_elf.iter().take(3).sum()
 }
 
 fn read_file(file_path: &str) -> String {

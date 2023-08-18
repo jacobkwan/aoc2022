@@ -20,13 +20,11 @@ fn puzzle1(input: &str) -> u32 {
 
 // computes the player's score for a round, given the player and opponent moves
 fn game_score(player: u32, opponent: u32) -> u32 {
-    if player == (opponent + 1) % 3 {
-        return 6;
+    match player {
+        p if p == (opponent + 1) % 3 => 6,
+        p if p == opponent => 3,
+        _ => 0,
     }
-    if player == opponent {
-        return 3;
-    }
-    0
 }
 
 fn puzzle2(input: &str) -> u32 {
@@ -44,13 +42,12 @@ fn puzzle2(input: &str) -> u32 {
 
 // computes the move the player should make to get the given outcome, given the opponent's move
 fn move_for_outcome(opponent: u32, outcome: u32) -> u32 {
-    if outcome == 0 {
-        return (opponent + 2) % 3;
+    match outcome {
+        0 => (opponent + 2) % 3,
+        1 => opponent,
+        2 => (opponent + 1) % 3,
+        _ => panic!("Invalid outcome"),
     }
-    if outcome == 1 {
-        return opponent;
-    }
-    (opponent + 1) % 3
 }
 
 fn read_file(file_path: &str) -> String {

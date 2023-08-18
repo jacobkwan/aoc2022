@@ -11,15 +11,13 @@ fn puzzle1(input: &str) -> u32 {
         .split("\n")
         .map(|rucksack| {
             let (first_half, second_half) = rucksack.split_at(rucksack.len() / 2);
-            let first_half_letters_set: HashSet<char> = HashSet::from_iter(first_half.chars());
+            let first_half_letters_set = first_half.chars().collect::<HashSet<char>>();
 
             // find the common letter between first_half and second_half
-            for char in second_half.chars() {
-                if first_half_letters_set.contains(&char) {
-                    return priority(char);
-                }
-            }
-            0
+            second_half
+                .chars()
+                .find(|c| first_half_letters_set.contains(c))
+                .map_or(0, priority)
         })
         .sum()
 }
