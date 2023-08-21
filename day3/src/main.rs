@@ -9,7 +9,7 @@ fn main() {
 
 fn puzzle1(input: &str) -> u32 {
     input
-        .split("\n")
+        .split('\n')
         .map(|rucksack| {
             let (first_half, second_half) = rucksack.split_at(rucksack.len() / 2);
             let first_half_letters_set = first_half.chars().collect::<HashSet<char>>();
@@ -42,10 +42,10 @@ fn puzzle2_fp(input: &str) -> u32 {
                 .reduce(|set_a, set_b| {
                     set_a
                         .intersection(&set_b)
-                        .cloned()
+                        .copied()
                         .collect::<HashSet<char>>()
                 })
-                .map(|common_letters| common_letters.iter().next().unwrap().clone())
+                .map(|common_letters| *common_letters.iter().next().unwrap())
                 .map_or(0, priority)
         })
         .sum()

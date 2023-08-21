@@ -8,9 +8,9 @@ fn main() {
 
 fn puzzle1(input: &str) -> u32 {
     input
-        .split("\n")
+        .split('\n')
         .map(|line| {
-            let opponent = line.chars().nth(0).unwrap() as u32 - 'A' as u32;
+            let opponent = line.chars().next().unwrap() as u32 - 'A' as u32;
             let player = line.chars().nth(2).unwrap() as u32 - 'X' as u32;
 
             game_score(player, opponent) + player + 1
@@ -29,9 +29,9 @@ fn game_score(player: u32, opponent: u32) -> u32 {
 
 fn puzzle2(input: &str) -> u32 {
     input
-        .split("\n")
+        .split('\n')
         .map(|line| {
-            let opponent = line.chars().nth(0).unwrap() as u32 - 'A' as u32;
+            let opponent = line.chars().next().unwrap() as u32 - 'A' as u32;
             let outcome = line.chars().nth(2).unwrap() as u32 - 'X' as u32;
             let player = move_for_outcome(opponent, outcome);
 

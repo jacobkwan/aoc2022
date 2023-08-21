@@ -12,7 +12,7 @@ fn puzzle1(input: &str) -> u32 {
         .split("\n\n")
         .map(|elf_items| {
             elf_items
-                .split("\n")
+                .split('\n')
                 .map(|item| item.parse::<u32>().unwrap())
                 .sum()
         })
@@ -25,7 +25,7 @@ fn puzzle2(input: &str) -> u32 {
         .split("\n\n")
         .map(|elf_items| {
             elf_items
-                .split("\n")
+                .split('\n')
                 .map(|item| item.parse::<u32>().unwrap())
                 .sum()
         })
